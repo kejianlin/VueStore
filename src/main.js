@@ -6,8 +6,14 @@ Vue.use(VueRouter)
 
 import VueResource from 'vue-resource'
 
-Vue.use(VueResource)
+import moment from "moment"
 
+Vue.filter('dateFormat',function (dataStr, pattern = "YYYY-MM-DD HH:mm:ss"){
+  return moment(dataStr).format(pattern)
+})
+
+Vue.use(VueResource)
+Vue.http.options.root = 'http://www.liulongbin.top:3005';
 import MintUI from 'mint-ui'
 
 Vue.use(MintUI)
