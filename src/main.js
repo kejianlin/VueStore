@@ -14,18 +14,19 @@ Vue.filter('dateFormat',function (dataStr, pattern = "YYYY-MM-DD HH:mm:ss"){
 
 Vue.use(VueResource)
 Vue.http.options.root = 'http://www.liulongbin.top:3005';
+
 import MintUI from 'mint-ui'
-
 Vue.use(MintUI)
-
 import 'mint-ui/lib/style.css'
+
+
 import './lib/mui/css/mui.css'
 import './lib/mui/css/icons-extra.css'
 import app from './App.vue'
 
-
-
 import router from './router.js'
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview)
 
 new Vue({
   el: '#app',
