@@ -1,16 +1,19 @@
 <template>
   <div class="app-container">
+
+		<!-- 顶部 Header 区域 -->
     <mt-header fixed title="柯建林">
 			<span slot="left" @click="goBack" v-show="flag">
    			 <mt-button icon="back">返回</mt-button>
 			</span>
 		</mt-header>
 
+		<!-- 中间的 路由 router-view 区域 -->
 		<transition>
 		<router-view></router-view>
 		</transition>
-
-    	<nav class="mui-bar mui-bar-tab">
+		<!-- 底部 Tabbar 区域 -->
+    <nav class="mui-bar mui-bar-tab">
 			<router-link class="mui-tab-item-llb" to="/home">
 				<span class="mui-icon mui-icon-home"></span>
 				<span class="mui-tab-label">首页</span>
@@ -45,6 +48,7 @@ export default {
 	},
 	methods:{
 		goBack(){
+			// 点击后退
 			this.$router.go(-1);
 		}
 	},

@@ -23,7 +23,7 @@ import { Toast } from "mint-ui";
 export default {
   data(){
     return {
-      newslist: []
+      newslist: []// 新闻列表
     };
   },
   created(){
@@ -31,8 +31,10 @@ export default {
   },
   methods:{
     getNewsList() {
+      // 获取新闻列表
       this.$http.get("api/getnewslist").then(result => {
         if (result.body.status === 0) {
+          // 如果没有失败，应该把数据保存到 data 上
           this.newslist = result.body.message;
         } else {
           Toast('获取新闻列表失败！')
