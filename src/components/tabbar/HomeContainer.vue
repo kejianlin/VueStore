@@ -1,10 +1,9 @@
 <template>
   <div>
-    <mt-swipe :auto="4000">
-      <mt-swipe-item v-for="item in lunbotuList" :key="item.id">
-        <img :src="item.img" alt="">
-      </mt-swipe-item>
-    </mt-swipe>
+    <!-- 轮播图区域 -->
+    <swiper :lunbotuList="lunbotuList" :isfull="true"></swiper>
+
+    <!-- 九宫格 到 六宫格 的改造工程 -->
      <ul class="mui-table-view mui-grid-view mui-grid-9">
 		 <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
        <router-link to="/home/newslist">
@@ -31,11 +30,12 @@
 
 <script>
 import { Toast } from "mint-ui";
+import  swiper  from "../subcomponents/swiper.vue";
 
 export default {
   data() {
     return {
-      lunbotuList: [] 
+      lunbotuList: [] //保存轮播图
     };
   },
   created() {
@@ -43,40 +43,25 @@ export default {
   },
   methods: {
      getLunbotu() {
-  
+       //获取轮播图数据的方法
       this.$http.get("api/getlunbo").then(result => {
         if (result.body.status === 0) {
+          //成功了
           this.lunbotuList = result.body.message;
         } else {
+          //失败了
           Toast("加载轮播图失败。。。");
         }
       });
     }
+  },
+  components: {
+    swiper
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.mint-swipe{
-  height: 200px;
-
-.mint-swipe-item{
-  &:nth-child(1){
-  background-color:papayawhip;
-  }
-  &:nth-child(2){
-  background-color:blueviolet;
-  }
-  &:nth-child(3){
-  background-color:yellowgreen;
-  }
- img{
-    width:  100%;
-    height: 100%;
-    }
-  }
-}
-
 .mui-grid-view.mui-grid-9{
   background-color: #fff;
   border: none;
@@ -90,5 +75,4 @@ export default {
 .mui-grid-view.mui-grid-9 .mui-table-view-cell{
   border:0;
 }
-
 </style>
