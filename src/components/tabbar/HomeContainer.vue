@@ -35,7 +35,7 @@ import  swiper  from "../subcomponents/swiper.vue";
 export default {
   data() {
     return {
-      lunbotuList: [] //保存轮播图
+      lunbotuList: [] // 保存轮播图的数组
     };
   },
   created() {
@@ -45,6 +45,7 @@ export default {
      getLunbotu() {
        //获取轮播图数据的方法
       this.$http.get("api/getlunbo").then(result => {
+        // console.log(result.body);
         if (result.body.status === 0) {
           //成功了
           this.lunbotuList = result.body.message;

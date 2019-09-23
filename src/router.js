@@ -36,7 +36,7 @@ var router = new VueRouter({
     {path:'/home/goodsdesc/:id', component:GoodsDesc, name:'goodsdesc'},
     {path:'/home/goodscomment/:id', component:GoodsComment, name:'goodscomment'}
   ],
-  linkActiveClass:"mui-active"
+  linkActiveClass:"mui-active"// 覆盖默认的路由高亮的类，默认的类叫做 router-link-active
 })
-
+// 把路由对象暴露出去
 export default router
