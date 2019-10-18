@@ -1,17 +1,24 @@
 <template>
   <div class="app-container">
 
+		<!-- 完成 Header 区域，使用的是 Mint-UI 中的 Header 组件 -->
 		<!-- 顶部 Header 区域 -->
-    <mt-header fixed title="柯建林">
+    <mt-header fixed title="Vue商城">
 			<span slot="left" @click="goBack" v-show="flag">
    			 <mt-button icon="back">返回</mt-button>
 			</span>
 		</mt-header>
 
+		<!-- 在 Header 和 Tabbar 之间放入 <router-view></router-view> 用来展示路由匹配到的组件 -->
 		<!-- 中间的 路由 router-view 区域 -->
 		<transition>
 		<router-view></router-view>
 		</transition>
+
+		<!-- 制作底部的 Tabbar 区域，使用的是 MUI 中的 tabbar.html 组件 -->
+		<!-- 修改Tabbel 代码，部分类和文字需要修改
+				这里在制作购物车小图标的时候，先把扩展图标的css样式文件和fonts文件到项目lib对应文件中
+				为购物车小图标添加如下样式mui-icon mui-icon-extra mui-icon-extra-cart -->
 		<!-- 底部 Tabbar 区域 -->
     <nav class="mui-bar mui-bar-tab">
 			<router-link class="mui-tab-item-llb" to="/home">
@@ -79,6 +86,7 @@ export default {
 	opacity:0;
 	transform:translateX(100%);
 }
+// 将 .v-leave-to 设置 transform: translateX(-100%); 这样就实现从右边进，左边出
 .v-leave-to{
 	opacity:0;
 	transform:translateX(-100%);

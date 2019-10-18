@@ -1,6 +1,10 @@
 <template>
   <div>
     <!-- 轮播图区域 -->
+    <!-- 在商品详情页面中，轮播图的图片如果也是用宽高为100%的话，页面不好看
+    商品详情页面的轮播期望高度是100%，但宽度为自适应，这时候会好看
+    解决方案：从宽度解决，定义一个属性，让使用轮播图的调用者手动指定是否为100%宽度
+    给需要使用轮播图组件的组件的轮播图区域加一个变量:isfull="true"便于控制类的样式是否应用，在HomeContainer.vue中就可以这样写： -->
     <swiper :lunbotuList="lunbotuList" :isfull="true"></swiper>
 
     <!-- 九宫格 到 六宫格 的改造工程 -->
@@ -63,6 +67,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+//添加样式
 .mui-grid-view.mui-grid-9{
   background-color: #fff;
   border: none;

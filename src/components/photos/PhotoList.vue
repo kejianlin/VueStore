@@ -1,5 +1,7 @@
 <template>
   <div>
+		<!-- 借助 MUI 中的tab-top-webview-main.html组件，选取其中的代码, 去掉.mui-fullscreen类 -->
+		<!-- 此时滑动条是无法进行正常滑动的，可能是由于 js 没写的原因，去查找官方文档，官方明确写到若需要使用滑动条，要先初始化mui插件 -->
 		<!-- 顶部滑动条区域 -->
      <div id="slider" class="mui-slider">
 				<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
@@ -25,8 +27,20 @@
 
 <script>
 // 1. 导入 mui 的js文件
-import mui from '../../lib/mui/js/mui.min.js'
+// import mui from '../../lib/mui/js/mui.min.js'
+// 注意：在初始化滑动条插件的时候，导入了mui.min.js，但是控制台报错，错误信息为
+// Uncaught TypeError: 'caller', 'callee', and 'arguments' properties may not be accessed on strict mode
+// 错误信息是，在严格模式下，不能使用'caller', 'callee', and 'arguments'这三个属性
+// 这个错误可能是mui.min.js中可能用到了'caller', 'callee', and 'arguments'这三个属性，但是bundle.js打包好的js中，默认启用了严格模式，所以冲突了
 
+// 解决方案：
+// mui.min.js中不用'caller', 'callee', and 'arguments'这三个属性了，但是肯定不现实
+// 修改webpack禁用严格模式，移除严格模式babel-plugin-transform-remove-strict-mode
+// 安装
+// npm install babel-plugin-transform-remove-strict-mode -S
+// 配置 .babelrc
+// {
+//   "plugins": ["transform-remove-strict-mode"]
 
 export default {
   data() {

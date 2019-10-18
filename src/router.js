@@ -1,3 +1,6 @@
+// 负责分发路由操作
+// 1.3 创建自己的router.js模块
+// 导入 vue-router
 import VueRouter from 'vue-router'
 
 //导入对应的路由组件
@@ -19,7 +22,7 @@ import GoodsComment from './components/goods/GoodsComment.vue'
 // import login from './subcom/login.vue'
 // import register from './subcom/register.vue'
 
-//3.创建路由对象
+// 创建路由对象
 var router = new VueRouter({
   routes:[//配置路由规则
     {path:"/", redirect:'/home'},
@@ -28,6 +31,7 @@ var router = new VueRouter({
     {path:'/shopcar', component:ShopcarContainer},
     {path:'/search', component:SearchContainer},
     {path:'/home/newslist', component:NewsList},
+    // 同样，由于需要匹配id，所以要把变量`:id`加到请求地址后面
     {path:'/home/newsinfo/:id', component:NewsInfo},
     {path:'/home/photolist', component:PhotoList},
     {path:'/home/photoinfo/:id', component:PhotoInfo},
@@ -38,5 +42,6 @@ var router = new VueRouter({
   ],
   linkActiveClass:"mui-active"// 覆盖默认的路由高亮的类，默认的类叫做 router-link-active
 })
+
 // 把路由对象暴露出去
 export default router

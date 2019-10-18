@@ -116,16 +116,21 @@ var store = new Vuex.Store({
 })
 // 2.1 导入 ue-resource
 import VueResource from 'vue-resource'
-//导入格式化时间的插件
+
+// 3.1 导入格式化时间的插件
 import moment from "moment"
-//定义全局的过滤器
+// 3.2 定义全局的过滤器
 Vue.filter('dateFormat',function (dataStr, pattern = "YYYY-MM-DD HH:mm:ss"){
   return moment(dataStr).format(pattern)
 })
 
 // 2.2 安装 vue-resource
 Vue.use(VueResource)
+//由于每请求一次接口中的数据都要使用到根路径，所以将根路径配置起来
+//注意：要放到注册了vue-resource之后, 即Vue.use(VueResource)之后
+//这样的话，以前接口的地方就需要更改，去掉根路径的这一段即可
 // 设置请求的根路径
+// 配置全局根路径
 Vue.http.options.root = 'http://www.liulongbin.top:3005';
 
 import MintUI from 'mint-ui'
@@ -139,9 +144,10 @@ import './lib/mui/css/icons-extra.css'
 // 导入 App 根组件
 import app from './App.vue'
 
-// 1.3 导入自己的 router.js 路由模块
+// 1.3 导入自己的 router.js 模块
 import router from './router.js'
-// 安装 图片预览插件
+
+// 4.1 安装 图片预览插件
 import VuePreview from 'vue-preview'
 Vue.use(VuePreview)
 
